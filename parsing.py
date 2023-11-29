@@ -3,7 +3,6 @@ import codecs
 import json
 
 
-folder_path = input("Enter file Path ")
 def Parse(folder_path):
     for file_name in os.listdir(folder_path):
         if file_name.endswith(".json"):
@@ -28,3 +27,4 @@ def Parse(folder_path):
 
             except Exception as e:
                 print(f"Error processing {json_file_path}: {e}")
+
