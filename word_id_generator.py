@@ -1,10 +1,15 @@
-def word_id_generator(word, word_list):
-    existing_word_ids = {existing_word["id"] for existing_word in word_list}
+def word_id_generator():
+    mapping_words_to_id = {}
+    current_word_id = 0
 
-    new_word_id = 0
-    
-    # Increment the new word ID until a unique ID is found
-    while new_word_id in existing_word_ids:
-        new_word_id =new_word_id+ 1
+    # Function to return the ID of a word
+    def get_word_id(word):
+        nonlocal current_word_id  
 
-    return new_word_id
+        #If the current word id is not yet mapped then we assign that Id to our word and increment it
+        if word not in mapping_words_to_id:
+            mapping_words_to_id[word] = current_word_id
+            current_word_id += 1
+        #Returning the Assigned ID
+        return mapping_words_to_id[word]
+    return get_word_id
