@@ -15,7 +15,7 @@ import copy
 
 
 
-def FWD_index_parsing(file_path):
+def FWD_index_parsing(file_path, index_path):
     word_dict = {"id" : 0,"count" : 0}
     
     list_of_words = []
@@ -72,14 +72,14 @@ def FWD_index_parsing(file_path):
 
         #writes the enitre article list into a json
         try:
-            with open(r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\FWD_index.json", 'r') as read_file:   #reading from existing Fwd_index
+            with open(index_path, 'r') as read_file:   #reading from existing Fwd_index
                 data = json.load(read_file)
                 data.append(article_list)
         except json.JSONDecodeError as e:
                 data = []
                 data.append(article_list)
 
-        with open(r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\FWD_index.json", 'w') as write_file: #appending and writing to update_Fwd index
+        with open(index_path, 'w') as write_file: #appending and writing to update_Fwd index
             json.dump(data, write_file, indent= 2)
 
 
