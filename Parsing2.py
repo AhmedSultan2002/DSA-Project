@@ -1,19 +1,9 @@
 import json
 import string
-# using nltk to separate words and remove stop words from wordlist
 from nltk import  word_tokenize
 from nltk.corpus import stopwords
 from stop_words import get_stop_words
 import copy
-
-
-
-#items to be used globally and passed into parsing function
-
-file_path1 = r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\nela-gt-2022\newsdata\369news.json"
-
-
-
 
 
 
@@ -77,7 +67,7 @@ def FWD_index_parsing(file_path):
 
 
 
-        #Might move this block of code outside a loop that populates article_list first
+        #writes the enitre article list into a json
         try:
             with open(r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Example.json", 'r') as read_file:   #reading from existing Fwd_index
                 data = json.load(read_file)
@@ -93,6 +83,5 @@ def FWD_index_parsing(file_path):
 
 
 
-FWD_index_parsing(file_path1)
 
 

@@ -1,10 +1,12 @@
-import parsing as ps
-import os
-import json
-import codecs
+import Parsing2 as Ps
+from glob import glob
 
 
-folder_path = input("Enter file Path: ")
 
-ps.Parse(folder_path)
+Jsons = glob(r'D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\nela-gt-2022\newsdata\*')
+
+#for Json in Jsons:
+    #Ps.FWD_index_parsing(Json) To generate forward_index
+
+
 
