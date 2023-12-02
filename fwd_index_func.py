@@ -18,7 +18,6 @@ import copy
 def FWD_index_parsing(file_path):
     word_dict = {"id" : 0,"count" : 0}
     
-    word_list = []
 
     Doc_dict = {
     "title" : " ",
@@ -46,25 +45,25 @@ def FWD_index_parsing(file_path):
             
 
             
-            stop_words2 = set(get_stop_words("en"))                 #
+            stop_words = set(get_stop_words("en"))                  #
             separated_words_no_stop_words = []                      #
             for word in separated_words:                            # Removing stop words from word list
-                if  not word.lower() in stop_words2:                # 
+                if  not word.lower() in stop_words:                 # 
                     separated_words_no_stop_words.append(word)      #
 
-            Cur_list = word_list.copy()                             #to clear list if function runs more than once
+            word_list = []                             #to clear list if function runs more than once
             x = 0
             for word1 in set(separated_words_no_stop_words):
                 cur_word = word_dict.copy()                                                     # splitting words into words and word counts and inputting that into dictionaries
                 cur_word.update({"id" : copy.copy(x)})
                 cur_word.update({"count" : separated_words_no_stop_words.count(word1)})         # and adding them to a list of said words and word counts
                 x = x + 1
-                Cur_list.append(cur_word.copy())
+                word_list.append(cur_word.copy())
 
             cur_doc = Doc_dict.copy()
             cur_doc.update({"title" : file["title"]})               # adding list to a dictionary of doc, which includes title, url and list of word dictionaries
             cur_doc.update({"URL" : file["url"]})
-            cur_doc.update({"words" : Cur_list})
+            cur_doc.update({"words" : word_list})
 
             article_list.append(cur_doc)
 
