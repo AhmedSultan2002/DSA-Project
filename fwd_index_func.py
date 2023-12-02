@@ -8,8 +8,12 @@ import copy
 
 
 
+
+
 #parsing function, loads file_path into a variable, uses said filepath to open a file, loads that file into a json object, which is then further used to 
 #get needed values from the list.
+
+
 
 def FWD_index_parsing(file_path):
     word_dict = {"id" : 0,"count" : 0}
@@ -26,7 +30,6 @@ def FWD_index_parsing(file_path):
 
     with open (file_path, 'r') as file:
         json_file = json.load(file)                                 # loading json file
-        print(len(json_file))
         for file in json_file:                                      # To go over every article in json file
 
 
@@ -78,7 +81,6 @@ def FWD_index_parsing(file_path):
 
         with open(r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\FWD_index.json", 'w') as write_file: #appending and writing to update_Fwd index
             json.dump(data, write_file, indent= 2)
-
 
 
 
