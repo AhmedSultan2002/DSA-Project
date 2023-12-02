@@ -18,11 +18,12 @@ import copy
 def FWD_index_parsing(file_path):
     word_dict = {"id" : 0,"count" : 0}
     
+    list_of_words = []
 
     Doc_dict = {
     "title" : " ",
     "URL" : " ",
-    "words" : word_list 
+    "words" : list_of_words 
     }
 
     article_list = []
