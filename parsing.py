@@ -3,6 +3,8 @@ import codecs
 import json
 
 
+
+
 def Parse(folder_path):
     for file_name in os.listdir(folder_path):
         if file_name.endswith(".json"):
