@@ -52,7 +52,7 @@ def FWD_index_parsing(file_path):
                 if  not word.lower() in stop_words:                 # 
                     separated_words_no_stop_words.append(word)      #
 
-            word_list = []                             #to clear list if function runs more than once
+            word_list = []                             #initialising  list of words dictionary
             x = 0
             for word1 in set(separated_words_no_stop_words):
                 cur_word = word_dict.copy()                                                     # splitting words into words and word counts and inputting that into dictionaries
