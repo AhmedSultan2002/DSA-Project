@@ -4,7 +4,7 @@ from nltk import  word_tokenize
 from nltk.corpus import stopwords
 from stop_words import get_stop_words
 import copy
-
+import word_id_generator as WID
 
 
 
@@ -16,6 +16,7 @@ import copy
 
 
 def FWD_index_parsing(file_path, index_path):
+    word_func = WID.word_id_generator()
     word_dict = {"id" : 0,"count" : 0}
     
     list_of_words = []
@@ -60,19 +61,17 @@ def FWD_index_parsing(file_path, index_path):
 
 
             word_list = []                             #initialising  list of words dictionary
-            x = 0
+            
             for word1 in set(separated_words_no_stop_words):
                 cur_word = word_dict.copy()                                                     # splitting words into words and word counts and inputting that into dictionaries
-                cur_word.update({"id" : copy.copy(x)})
+                cur_word.update({"id" : word_func(word1)})
                 cur_word.update({"count" : separated_words_no_stop_words.count(word1)})         # and adding them to a list of said words and word counts
-                x = x + 1
                 word_list.append(cur_word.copy())
-            x = 0
+            
             for title_word1 in set(title_words_no_stop_words):                                  #splitting title words into words and word counts and giving them higher priority by artificially increasing their count
                 cur_word = word_dict.copy()
-                cur_word.update({"id" : copy.copy(x)})
+                cur_word.update({"id" : word_func(word1)})
                 cur_word.update({"count" : title_words_no_stop_words.count(title_word1) + 20})  #Then adding them to the same list of words in relation to the article
-                x = x + 1
                 word_list.append(cur_word.copy())
 
             cur_doc = Doc_dict.copy()
