@@ -14,6 +14,7 @@ Indexes = glob(r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\fwd_indexe
 
 json_path = r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\nela-gt-2022\newsdata\369news.json"
 index_path = r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\fwd_indexes\Fwd_index02.json"
+word_func = WID.word_id_generator()
 
-FW.FWD_index_parsing(json_path, index_path)
+FW.FWD_index_parsing(json_path, index_path, word_func)
 

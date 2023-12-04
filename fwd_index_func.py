@@ -15,8 +15,7 @@ import word_id_generator as WID
 
 
 
-def FWD_index_parsing(file_path, index_path):
-    word_func = WID.word_id_generator()
+def FWD_index_parsing(file_path, index_path, word_func):
     word_dict = {"id" : 0,"count" : 0, "word_name" : " "}
     
     list_of_words = []
