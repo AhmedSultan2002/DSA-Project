@@ -17,7 +17,7 @@ import word_id_generator as WID
 
 def FWD_index_parsing(file_path, index_path):
     word_func = WID.word_id_generator()
-    word_dict = {"id" : 0,"count" : 0}
+    word_dict = {"id" : 0,"count" : 0, "word_name" : " "}
     
     list_of_words = []
 
@@ -35,7 +35,7 @@ def FWD_index_parsing(file_path, index_path):
 
 
 
-            curr_content = file['content']                  
+            curr_content = file['content'].lower()                  
             translator = str.maketrans("", "", string.punctuation)  #
             curr_content = curr_content.translate(translator)       #
             unnecessary_char = ['’',"“","”","‘"]                    # Cleaning string of any punctuation or unwanted characters
@@ -43,7 +43,7 @@ def FWD_index_parsing(file_path, index_path):
                 curr_content = curr_content.replace(char, "")       #
 
 
-            title_string = file['title']
+            title_string = file['title'].lower()
             title_words  = word_tokenize(title_string)
             separated_words = word_tokenize(curr_content)           # Tokenizing content into word list
             
@@ -56,24 +56,36 @@ def FWD_index_parsing(file_path, index_path):
                 if  not word.lower() in stop_words:                 # 
                     separated_words_no_stop_words.append(word)
             for title_word in title_words:
-                if not word.lower() in stop_words:
+                if not title_word.lower() in stop_words:
                     title_words_no_stop_words.append(title_word)
 
-
+        
             word_list = []                             #initialising  list of words dictionary
             
             for word1 in set(separated_words_no_stop_words):
                 cur_word = word_dict.copy()                                                     # splitting words into words and word counts and inputting that into dictionaries
                 cur_word.update({"id" : word_func(word1)})
                 cur_word.update({"count" : separated_words_no_stop_words.count(word1)})         # and adding them to a list of said words and word counts
+                cur_word.update({"word_name" : word1})
                 word_list.append(cur_word.copy())
             
-            for title_word1 in set(title_words_no_stop_words):                                  #splitting title words into words and word counts and giving them higher priority by artificially increasing their count
+        
+            for title_word1 in set(title_words_no_stop_words):
+               found = 0
+               for T_word in word_list:
+                    if title_word1 in T_word.values():
+                        T_word.update({"count" : separated_words_no_stop_words.count(title_word1) + 20})
+                        found = 1
+                        break
+            if found == 0:
                 cur_word = word_dict.copy()
-                cur_word.update({"id" : word_func(word1)})
-                cur_word.update({"count" : title_words_no_stop_words.count(title_word1) + 20})  #Then adding them to the same list of words in relation to the article
+                cur_word.update({"id" : word_func(title_word1)})
+                cur_word.update({"count" : title_words_no_stop_words.count(title_word1) + 20})  
+                cur_word.update({"word_name" : title_word1}) 
                 word_list.append(cur_word.copy())
+            
 
+            print(len(word_list))
             cur_doc = Doc_dict.copy()
             cur_doc.update({"title" : file["title"]})               # adding list to a dictionary of doc, which includes title, url and list of word dictionaries
             cur_doc.update({"URL" : file["url"]})
