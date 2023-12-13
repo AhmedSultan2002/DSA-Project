@@ -1,5 +1,5 @@
-def word_id_generator():
-    mapping_words_to_id = {}
+def word_id_generator(mapping_words_to_id):
+    
     current_word_id = 0
 
     # Function to return the ID of a word

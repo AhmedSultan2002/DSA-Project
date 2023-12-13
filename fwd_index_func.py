@@ -79,7 +79,6 @@ def FWD_index_parsing(file_path, index_path, word_func):
             cur_doc.update({"words" : word_list})
 
             article_list.append(cur_doc)
-            print(len(article_list))
 
 
 
@@ -93,7 +92,7 @@ def FWD_index_parsing(file_path, index_path, word_func):
                 data.extend(article_list)
 
         with open(index_path, 'w') as write_file: #appending and writing to update_Fwd index
-            json.dump(data, write_file, indent= 2)
+            json.dump(data, write_file, indent= 0)
 
 
 
