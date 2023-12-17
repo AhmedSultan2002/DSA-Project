@@ -3,7 +3,7 @@ from glob import glob
 
 
 def inverted_func():
-    article_dic = {}
+    #article_dic = {}
     wordid_dict = {}
 
 
