@@ -13,7 +13,7 @@ def inverted_func():
             cur_index_json = json.load(cur_file)
             for item in cur_index_json:
                 for word in item["words"]:
-                    word_id = word['id']
+                    word_id = int(word['id'])
                     url = item["URL"]
                     count = word["count"]
                     
