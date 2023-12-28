@@ -11,7 +11,7 @@ def create_empty_json_files(folder_path, num_files):
             json.dump([], json_file)
 
 
-folder_path = r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\fwd_indexes"
+folder_path = r"Resources\fwd_indexes"
 num_files = 36
 
 create_empty_json_files(folder_path, num_files)

@@ -117,6 +117,6 @@ def inverted_func(index_file):
 
 
 
-    file_path = r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\inv_index\new_inv_index.json"
+    file_path = r"Resources\inv_index\new_inv_index.json"
     with open(file_path, 'w') as inv_index:
         json.dump(wordid_dict, inv_index, indent=0) 

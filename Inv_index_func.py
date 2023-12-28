@@ -7,7 +7,7 @@ def inverted_func():
     wordid_dict = {}        #impleneting word id dictionary, basically the content of the inverted index
 
 
-    Fwd_indexes = glob(r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\fwd_indexes\*")   #Accessing all forward indexes
+    Fwd_indexes = glob(r"Resources\fwd_indexes\*")   #Accessing all forward indexes
     for index_file in Fwd_indexes:
         with open(index_file, 'r') as cur_file:
             cur_index_json = json.load(cur_file)                            #loading the contents of current fwd_index
@@ -25,7 +25,7 @@ def inverted_func():
 
     
 
-    file_path = r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\inv_index\inv_index.json"
+    file_path = r"Resources\inv_index\inv_index.json"
     with open(file_path, 'w') as inv_index:
         json.dump(wordid_dict, inv_index, indent=0)                         #finally writing this to make inverted index
 

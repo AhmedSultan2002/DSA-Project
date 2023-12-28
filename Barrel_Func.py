@@ -13,7 +13,7 @@ def Barrel_func(file_path):
             barrel = {id : index_data[id] for id in ids[i:i + barrel_size]}
 
 
-            with open(f"D:/Vscode/NUST/Semester 3/DSA2/DSA-Project/Resources/inv_index/barrel_{i//barrel_size}.json", 'w') as cur_barrel:
+            with open(f"Resources/inv_index/barrel_{i//barrel_size}.json", 'w') as cur_barrel:
                 json.dump(barrel, cur_barrel, indent = 2)
 
 
@@ -22,7 +22,7 @@ def Barrel_func(file_path):
 
 
 
-Barrel_func(r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\inv_index\inv_index.json")
+Barrel_func(r"Resources\inv_index\inv_index.json")
 
 
 

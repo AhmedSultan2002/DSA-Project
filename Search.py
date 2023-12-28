@@ -7,7 +7,7 @@ import heapq
 
 def Search_func(query):
     word_dict = {}
-    filepath = r"D:\Vscode\NUST\Semester 3\DSA2\DSA-Project\Resources\Word_Dictionary\lexicon.json"
+    filepath = r"Resources\Word_Dictionary\lexicon.json"
     with open(filepath, 'r') as dic_file:
         word_dict = json.load(dic_file)
 
@@ -19,7 +19,7 @@ def Search_func(query):
     
     if len(separated_query) == 1:
         wor_id = word_func(separated_query[0].lower())
-        filepath = f"D:\\Vscode\\NUST\\Semester 3\\DSA2\\DSA-Project\\Resources\\inv_index\\barrel_{wor_id//500}.json"
+        filepath = f"Resources\\inv_index\\barrel_{wor_id//500}.json"
         with open(filepath, 'r') as current_barrel:
             loaded_barrel = json.load(current_barrel)
             id_dict = loaded_barrel[str(wor_id)]
@@ -32,16 +32,19 @@ def Search_func(query):
         for word in separated_query:
             wor_id = word_func(word)
             #print(wor_id)
-            filepath = f"D:\\Vscode\\NUST\\Semester 3\\DSA2\\DSA-Project\\Resources\\inv_index\\barrel_{wor_id//500}.json"
+            filepath = f"Resources\\inv_index\\barrel_{wor_id//500}.json"
             with open(filepath, 'r') as current_barrel:
                 loaded_barrel = json.load(current_barrel)
                 id_dict = loaded_barrel[str(wor_id)]
                 for key, value in id_dict.items():
                     heapq.heappush(URL_heap, (-value, key))
-            while URL_heap:
-                value, key = heapq.heappop(URL_heap)
-                URLs_List_in_order.append(key)
-        return URLs_List_in_order
+        while URL_heap:
+            value, key = heapq.heappop(URL_heap)
+            URLs_List_in_order.append(key)
+        
+        URLs_list_in_order_no_duplicates = []
+        URLs_list_in_order_no_duplicates = [url for url in URLs_List_in_order if url not in URLs_list_in_order_no_duplicates]
+        return URLs_list_in_order_no_duplicates
         
 
 

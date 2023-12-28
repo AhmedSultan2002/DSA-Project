@@ -6,8 +6,8 @@ import word_id_generator as WID
 
 def add_file_func(JsonFileContent):
     word_dict = {}
-    filepath = r"C:\Users\emanm\.vscode\DSA-Project\Search-Engine\Resources\nela-gt-2022\newsdata"
-    word_dict_path = r"C:\Users\emanm\.vscode\DSA-Project\Search-Engine\Resources\Word_Dictionary\lexicon.json"
+    filepath = r"Resources\nela-gt-2022\newsdata"
+    word_dict_path = r"Resources\Word_Dictionary\lexicon.json"
     
     with open(word_dict_path, 'r') as wr_dic_file:
         word_dict = json.load(wr_dic_file)
@@ -17,7 +17,7 @@ def add_file_func(JsonFileContent):
     AFD.FWD_index_parsing(JsonFileContent, filepath, word_func)
     AFD.inverted_func(filepath)
 
-    newfilePath = r"C:\Users\emanm\.vscode\DSA-Project\Search-Engine\Resources\inv_index\new_inv_index.json"
+    newfilePath = r"Resources\inv_index\new_inv_index.json"
     with open(newfilePath) as inv_index:
         inv_index_content = json.load(inv_index)
         ids = list(inv_index_content.keys())
