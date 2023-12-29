@@ -19,7 +19,11 @@ def Search_func(query):
     
     if len(separated_query) == 1:                    #Case if it is a single word query
         wor_id = word_func(separated_query[0].lower())
+<<<<<<< HEAD
         filepath = f"Resources\\inv_index\\barrel_{wor_id//10}.json"  #Get wordid of query from lexicon function, and use that to open corresponding barrel
+=======
+        filepath = f"Resources\\inv_index\\barrel_{wor_id//500}.json"  #Get wordid of query from lexicon function, and use that to open corresponding barrel
+>>>>>>> fc136bb4614b20f33d7d4a5d777a73859adc3eeb
         with open(filepath, 'r') as current_barrel:
             loaded_barrel = json.load(current_barrel)
             id_dict = loaded_barrel[str(wor_id)]
@@ -30,8 +34,14 @@ def Search_func(query):
     else:  #Case of multiword Query.
         URLs_List_in_order = []                                            #list of urls which will be returned
         for word in separated_query:
+<<<<<<< HEAD
             wor_id = word_func(word.lower())                                       #similar to before get word id for each word one by one
             filepath = f"Resources\\inv_index\\barrel_{wor_id//10}.json"  #Open corresponding barrel to find URLS
+=======
+            wor_id = word_func(word)                                       #similar to before get word id for each word one by one
+            #print(wor_id)
+            filepath = f"Resources\\inv_index\\barrel_{wor_id//500}.json"  #Open corresponding barrel to find URLS
+>>>>>>> fc136bb4614b20f33d7d4a5d777a73859adc3eeb
             with open(filepath, 'r') as current_barrel:
                 loaded_barrel = json.load(current_barrel)
                 id_dict = loaded_barrel[str(wor_id)]
