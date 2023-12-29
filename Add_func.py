@@ -4,27 +4,26 @@ import word_id_generator as WID
 
 def add_file_func(JsonFilePath):
     word_dict = {}
-    index_filepath = r"Resources\fwd_indexes\New_file.json"
-    word_dict_path = r"Resources\Word_Dictionary\lexicon.json"
+    index_filepath = r"Resources\fwd_indexes\New_file.json"   #path of fwd index that will be created always
+    word_dict_path = r"Resources\Word_Dictionary\lexicon.json" #path of lexicon
     
     with open(word_dict_path, 'r') as wr_dic_file:
         word_dict = json.load(wr_dic_file)
     
     word_func = WID.word_id_generator(word_dict)
 
-    AFD.FWD_index_parsing(JsonFilePath, index_filepath, word_func)
-    AFD.inverted_func(index_filepath)
+    AFD.FWD_index_parsing(JsonFilePath, index_filepath, word_func)  #create forward index from article
+    AFD.inverted_func(index_filepath)                               #create inverted index from article
 
-    newfilePath = r"Resources\inv_index\new_inv_index.json"
+    newfilePath = r"Resources\inv_index\new_inv_index.json" #path of inverted index that will be created always
     with open(newfilePath) as inv_index:
         inv_index_content = json.load(inv_index)
         ids = list(inv_index_content.keys())
         barrel_content = {}
         for key_id in ids:
-            barrelpath = f"Resources/inv_index/barrel_{int(key_id)//500}.json"
-            #print(int(key_id)//500)
-            with open(barrelpath, 'r') as reading_barrel:
-                barrel_content = json.load(reading_barrel)
+            barrelpath = f"Resources/inv_index/barrel_{int(key_id)//500}.json"      #browse through new inverted index getting one wordid at a time
+            with open(barrelpath, 'r') as reading_barrel:                           #then using wordid open corresponding barrel and update the associated
+                barrel_content = json.load(reading_barrel)                          #word id dictionary in that article
                 if key_id not in barrel_content:
                     barrel_content[key_id] = {}
                     barrel_content[key_id] = inv_index_content[key_id]

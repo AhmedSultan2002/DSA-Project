@@ -1,7 +1,7 @@
 import json
 import os
 
-
+#code to generate separate forward indexes
 def create_empty_json_files(folder_path, num_files):
     file_names = [f'Fwd_index{i:02d}.json' for i in range(1, num_files + 1)]    
     for file_name in file_names:
