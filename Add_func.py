@@ -23,8 +23,12 @@ def add_file_func(JsonFilePath):
         for key_id in ids:
             barrelpath = f"Resources/inv_index/barrel_{int(key_id)//10}.json"      #browse through new inverted index getting one wordid at a time
             with open(barrelpath, 'r') as reading_barrel:                           #then using wordid open corresponding barrel and update the associated
-                barrel_content = json.load(reading_barrel)                          #word id dictionary in that article
-                barrel_content[key_id].update(inv_index_content[key_id])            #using Update as it will create dictionary there if it doesnt exist and if it exists it will simply update it.
+                barrel_content = json.load(reading_barrel)
+                if key_id in barrel_content:                                    #word id dictionary in that article
+                    barrel_content[key_id].update(inv_index_content[key_id])            #using Update as it will create dictionary there if it doesnt exist and if it exists it will simply update it.
+                else:
+                    barrel_content[key_id] = {}
+                    barrel_content[key_id].update(inv_index_content[key_id])
             with open(barrelpath, 'w') as replacing_barrel:
                 json.dump(barrel_content, replacing_barrel, indent=0)
 

@@ -52,7 +52,7 @@ def Search_func(query):
 
 
         
-ToDisplay = Search_func("lucifer bomb")
+ToDisplay = Search_func("lucifer bomb assault")
 for stuff in ToDisplay:
     print(stuff)
 
