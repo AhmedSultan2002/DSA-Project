@@ -2,9 +2,9 @@ import json
 import Add_func_dependencies as AFD
 import word_id_generator as WID
 
-def add_file_func(JsonFileContent):
+def add_file_func(JsonFilePath):
     word_dict = {}
-    filepath = r"Resources\fwd_indexes\New_file.json"
+    index_filepath = r"Resources\fwd_indexes\New_file.json"
     word_dict_path = r"Resources\Word_Dictionary\lexicon.json"
     
     with open(word_dict_path, 'r') as wr_dic_file:
@@ -12,8 +12,8 @@ def add_file_func(JsonFileContent):
     
     word_func = WID.word_id_generator(word_dict)
 
-    AFD.FWD_index_parsing(JsonFileContent, filepath, word_func)
-    AFD.inverted_func(filepath)
+    AFD.FWD_index_parsing(JsonFilePath, index_filepath, word_func)
+    AFD.inverted_func(index_filepath)
 
     newfilePath = r"Resources\inv_index\new_inv_index.json"
     with open(newfilePath) as inv_index:
@@ -35,7 +35,5 @@ def add_file_func(JsonFileContent):
 
 
 #testing add function
-#filepath = r"Resources\nela-gt-2022\newsdata\369news.json"
-#with open(filepath, 'r') as testJson:
-#    content = json.load(testJson)
-#    add_file_func(content)
+filepath = r"Resources\nela-gt-2022\newsdata\369news.json"
+add_file_func(filepath)
