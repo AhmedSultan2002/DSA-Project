@@ -14,7 +14,7 @@ def Barrel_func(file_path):
 
 
             with open(f"Resources/inv_index/barrel_{i//barrel_size}.json", 'w') as cur_barrel:  #create custom barrel number based on i which will start at 0
-                json.dump(barrel, cur_barrel, indent = 0)
+                json.dump(barrel, cur_barrel)
 
 
 

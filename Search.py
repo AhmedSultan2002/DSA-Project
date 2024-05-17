@@ -51,10 +51,38 @@ def Search_func(query):
 
 
 
-        
-ToDisplay = Search_func("lucifer bomb assault")
-for stuff in ToDisplay:
-    print(stuff)
+if __name__ == "__main__":
+    print("Enter Search Prompt :")
+    prompt = input()
+    ToDisplay = Search_func(prompt)
+    for stuff in ToDisplay:
+        print(stuff)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
